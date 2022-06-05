@@ -74,6 +74,8 @@ function createManageButton(index) {
                     localStorage.setItem('task' + index, value);
                     let task = document.getElementById('task' + index);
                     task.textContent = value;
+                    let addPlaceholder = document.getElementById('newTask');
+                    addPlaceholder.value = '';
                 }
             }
         }).then((result) => {
@@ -84,7 +86,9 @@ function createManageButton(index) {
                 localStorage.removeItem('task' + index);
                 localStorage.removeItem('check' + index);
                 let oldNbTask = localStorage.getItem('nbTask');
-                localStorage.setItem('nbTask', oldNbTask--);
+                oldNbTask--;
+                console.log('The new nb is : ' + oldNbTask);
+                localStorage.setItem('nbTask', oldNbTask);
             }
         });
     })
